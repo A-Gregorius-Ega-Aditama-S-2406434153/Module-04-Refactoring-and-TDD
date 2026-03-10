@@ -21,10 +21,13 @@ public class Payment {
     private Map<String, String> paymentData = new HashMap<>();
 
     public void setPaymentData(Map<String, String> paymentData) {
-        if (paymentData == null) {
-            this.paymentData = new HashMap<>();
-            return;
+        this.paymentData = copyPaymentData(paymentData);
+    }
+
+    private Map<String, String> copyPaymentData(Map<String, String> source) {
+        if (source == null) {
+            return new HashMap<>();
         }
-        this.paymentData = new HashMap<>(paymentData);
+        return new HashMap<>(source);
     }
 }
