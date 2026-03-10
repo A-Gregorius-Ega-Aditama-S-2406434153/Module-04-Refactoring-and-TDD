@@ -14,6 +14,12 @@ import java.util.UUID;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
+    private static final String VOUCHER_CODE_KEY = "voucherCode";
+    private static final String COD_ADDRESS_KEY = "address";
+    private static final String COD_DELIVERY_FEE_KEY = "deliveryFee";
+    private static final String TRANSFER_BANK_KEY = "bankName";
+    private static final String TRANSFER_REFERENCE_KEY = "referenceCode";
+
     private final PaymentRepository paymentRepository;
 
     public PaymentServiceImpl(PaymentRepository paymentRepository) {
@@ -67,7 +73,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private String evaluateInitialStatus(String method, Map<String, String> paymentData) {
         if (isVoucherMethod(method)) {
-            return isValidVoucherCode(paymentData.get("voucherCode"))
+            return isValidVoucherCode(paymentData.get(VOUCHER_CODE_KEY))
                     ? Payment.STATUS_SUCCESS
                     : Payment.STATUS_REJECTED;
         }
@@ -104,13 +110,13 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private boolean isValidCashOnDeliveryData(Map<String, String> paymentData) {
-        return hasText(paymentData.get("address"))
-                && hasText(paymentData.get("deliveryFee"));
+        return hasText(paymentData.get(COD_ADDRESS_KEY))
+                && hasText(paymentData.get(COD_DELIVERY_FEE_KEY));
     }
 
     private boolean isValidBankTransferData(Map<String, String> paymentData) {
-        return hasText(paymentData.get("bankName"))
-                && hasText(paymentData.get("referenceCode"));
+        return hasText(paymentData.get(TRANSFER_BANK_KEY))
+                && hasText(paymentData.get(TRANSFER_REFERENCE_KEY));
     }
 
     private boolean hasText(String value) {
