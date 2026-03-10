@@ -18,7 +18,7 @@ public class InMemoryPaymentRepository implements PaymentRepository {
         }
         for (int i = 0; i < paymentData.size(); i++) {
             Payment storedPayment = paymentData.get(i);
-            if (storedPayment.getId() != null && storedPayment.getId().equals(payment.getId())) {
+            if (isSamePaymentId(storedPayment, payment)) {
                 paymentData.set(i, payment);
                 return payment;
             }
@@ -40,5 +40,9 @@ public class InMemoryPaymentRepository implements PaymentRepository {
     @Override
     public List<Payment> findAll() {
         return new ArrayList<>(paymentData);
+    }
+
+    private boolean isSamePaymentId(Payment firstPayment, Payment secondPayment) {
+        return firstPayment.getId() != null && firstPayment.getId().equals(secondPayment.getId());
     }
 }
