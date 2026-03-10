@@ -30,6 +30,6 @@ jobs:
         run: ./gradlew sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: A-Gregorius-Ega-Aditama-S-2406434153_Module-2-CI-CD-DevOpsFile
+          SONAR_PROJECT_KEY: A-Gregorius-Ega-Aditama-S-2406434153_Module-04-Refactoring-and-TDD
           SONAR_ORGANIZATION: a-gregorius-ega-aditama-s-2406434153
           SONAR_HOST_URL: https://sonarcloud.io

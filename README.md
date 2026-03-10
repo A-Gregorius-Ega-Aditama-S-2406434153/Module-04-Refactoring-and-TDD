@@ -198,3 +198,20 @@ I also improved maintainability by using constructor injection instead of field 
 In summary, applying SRP, DIP, and OCP in this project made the code easier to reason about, easier to test,
 and safer to evolve while keeping existing user-facing behavior intact.
 ```
+
+## Reflection 5:
+```text
+You have followed the Test-Driven Development workflow in the Exercise. Now answer these questions:
+
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+Please write your reflection inside the repository's README.md file.
+```
+
+## Answer reflection 5:
+The Test-Driven Development (TDD) flow in this exercise is useful for me because it pushes me to define expected behavior before writing implementation code. When I start from tests, I think earlier about both normal and failure scenarios, so my implementation becomes more focused and less speculative. The red-green-refactor cycle also gives fast feedback, which reduces the chance of large hidden mistakes. During this module, I felt that TDD helped me move with more confidence because I could verify behavior incrementally instead of relying on manual checks after many changes were already done.
+
+At the same time, I still need to improve how I apply TDD in practice. In some cases I wrote setup data that was bigger than necessary, which made tests harder to read and maintain. Next time, I should keep each test case narrower, prepare only the minimum required test data, and make test names more explicit about behavior. I also need to be stricter with the full cycle: write a failing test first, implement the smallest change needed to pass it, and then refactor for clarity. Doing that consistently will make my tests cleaner and make the development flow more predictable.
+
+From the F.I.R.S.T. perspective, my tests are mostly fast and repeatable because they use isolated unit-level scope and deterministic inputs. They are also self-validating since assertions clearly indicate pass or fail without manual interpretation. For independence, I have improved through setup/reset patterns, but I can still reduce coupling by avoiding unnecessary shared fixtures and over-stubbing. For timeliness, I generally followed writing tests before implementation in the tutorial, but I should apply that discipline more consistently for every edge case and negative path. Overall, my current tests are on the right track, and my next goal is to make them leaner, more behavior-focused, and more consistently aligned with all F.I.R.S.T. principles.
