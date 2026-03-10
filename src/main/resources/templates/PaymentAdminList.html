@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Admin List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <h3>Payment Admin List</h3>
+
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Payment ID</th>
+            <th>Order ID</th>
+            <th>Method</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="payment : ${payments}">
+            <td th:text="${payment.id}"></td>
+            <td th:text="${payment.order.id}"></td>
+            <td th:text="${payment.method}"></td>
+            <td th:text="${payment.status}"></td>
+            <td>
+                <a th:href="@{/payment/admin/detail/{id}(id=${payment.id})}" class="btn btn-outline-primary btn-sm">
+                    Detail
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/payment/detail}" class="btn btn-outline-secondary">Payment Detail Page</a>
+</div>
+</body>
+</html>
